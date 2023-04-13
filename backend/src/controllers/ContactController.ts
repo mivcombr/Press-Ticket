@@ -45,7 +45,7 @@ export const index = async (req: Request, res: Response): Promise<Response> => {
     pageNumber
   });
 
-  return res.json({ contacts, count, hasMore });
+ // return res.json({ contacts, count, hasMore });
 };
 
 export const getContact = async (req: Request, res: Response): Promise<Response> => {

@@ -10,6 +10,7 @@ import SendWhatsAppMessage from "../services/WbotServices/SendWhatsAppMessage";
 import ShowWhatsAppService from "../services/WhatsappService/ShowWhatsAppService";
 import ShowQueueService from "../services/QueueService/ShowQueueService";
 import formatBody from "../helpers/Mustache";
+import { logger } from "../utils/logger";
 
 type IndexQuery = {
   searchParam: string;
@@ -84,6 +85,8 @@ export const store = async (req: Request, res: Response): Promise<Response> => {
 export const show = async (req: Request, res: Response): Promise<Response> => {
   const { ticketId } = req.params;
 
+  console.log("show");
+
   const contact = await ShowTicketService(ticketId);
 
   return res.status(200).json(contact);
@@ -95,7 +98,7 @@ export const update = async (
 ): Promise<Response> => {
   const { ticketId } = req.params;
   const ticketData: TicketData = req.body;
-
+  
   const { ticket } = await UpdateTicketService({
     ticketData,
     ticketId
@@ -132,6 +135,8 @@ export const remove = async (
   const { ticketId } = req.params;
 
   const ticket = await DeleteTicketService(ticketId);
+
+  console.log("remove");
 
   const io = getIO();
   io.to(ticket.status)

@@ -28,8 +28,8 @@ import { i18n } from "../translate/i18n";
 
 import api from "../services/api";
 import toastError from "../errors/toastError";
-import { system } from "../config.json";
-import { systemVersion } from "../../package.json";
+import Config from "../config.json";
+import  systemVersion  from "../../package.json";
 import logodash from "../assets/logo-dash.png";
 
 const drawerWidth = 240;
@@ -247,7 +247,7 @@ const LoggedInLayout = ({ children }) => {
             noWrap
             className={classes.title}
           >
-            {i18n.t("mainDrawer.appBar.message.hi")} {user.name}, {i18n.t("mainDrawer.appBar.message.text")} {system.name || "Press Ticket"}
+            {i18n.t("mainDrawer.appBar.message.hi")} {user.name}, {i18n.t("mainDrawer.appBar.message.text")} {Config.name || "Press Ticket"}
           </Typography>
           {user.id && <NotificationsPopOver />}
 
@@ -284,8 +284,8 @@ const LoggedInLayout = ({ children }) => {
               </MenuItem>
               <Divider />
               <span className={classes.systemCss}>
-                <Link color="inherit" href={system.url || "https://github.com/rtenorioh/Press-Ticket"}>
-                  v{systemVersion}
+                <Link color="inherit" href={Config.url || "https://github.com/rtenorioh/Press-Ticket"}>
+                  v{systemVersion.systemVersion}
                 </Link>
               </span>
             </Menu>

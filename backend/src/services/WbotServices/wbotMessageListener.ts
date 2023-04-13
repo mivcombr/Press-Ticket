@@ -61,6 +61,8 @@ const verifyQuotedMessage = async (
     where: { id: wbotQuotedMsg.id.id }
   });
 
+  // VERIFICA MENSAGENS
+
   if (!quotedMsg) return null;
 
   return quotedMsg;
